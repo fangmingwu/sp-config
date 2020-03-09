@@ -5,7 +5,7 @@ spring:
     config:
       override-none: true
   rabbitmq:
-    host: 192.168.126.175
+    host: 192.168.126.174
     port: 5672
     username: admin
     password: admin
@@ -18,12 +18,10 @@ eureka:
     service-url:
       defaultZone: http://eureka1:2001/eureka, http://eureka2:2002/eureka
 
-#开启feign配置
 feign:
   hystrix:
     enabled: true
 
-#启用actuator客户端,暴露 hystrix.stream 端点
 management:
   endpoints:
     web:

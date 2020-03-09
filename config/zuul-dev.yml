@@ -18,22 +18,15 @@ eureka:
     service-url:
       defaultZone: http://eureka1:2001/eureka, http://eureka2:2002/eureka
 
-#设置 zuul 不过滤这些协议头,启动重试
 zuul:
-  routes:
-    item-service: /item-service/**
-    user-service: /user-service/**
-    order-service: /order-service/**
-
   retryable: true
-#添加集成的ribbon的超时和重试功能
+
 ribbon:
   ConnectTimeout: 1000
-  ReadTimeout: 2000
+  ReadTimeout: 1000
   MaxAutoRetriesNextServer: 1
   MaxAutoRetries: 1
 
-#降低 hystrix 超时时间，以便测试降级
 hystrix:
   command:
     default:
@@ -42,10 +35,8 @@ hystrix:
           thread:
             timeoutInMilliseconds: 500
 
-#暴露 hystrix.stream 监控端点
 management:
   endpoints:
     web:
       exposure:
         include: hystrix.stream
-
